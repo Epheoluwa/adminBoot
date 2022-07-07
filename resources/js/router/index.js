@@ -6,6 +6,7 @@ import Viewtask from '../pages/Viewtask.vue'
 import Comtask from '../pages/Comtask.vue'
 import Taskedit from '../pages/Taskedit.vue'
 import Login from '../pages/reg/Login.vue'
+import axios from "axios";
 
 
 const routes = [
@@ -22,7 +23,14 @@ const routes = [
     {
         path: '/viewtask',
         name: 'Viewtask',
-        component: Viewtask
+        component: Viewtask,
+        beforeEnter:(to, from, next) =>{
+            axios.get('/api/athenticated').then(()=>{
+                next()
+            }).catch(()=>{
+                return next({name: 'Login'})
+            })
+        }
     },
     {
         path: '/completedtask',

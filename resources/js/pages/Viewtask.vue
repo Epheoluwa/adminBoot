@@ -1,7 +1,7 @@
 <template>
     <div>
         <h3>Current Task</h3>
-
+        <button class="" @click.prevent="logout">Logout</button>
         
         <table class="table table-hover">
             <thead>
@@ -37,9 +37,11 @@
 <script>
 import { onMounted } from "vue";
 import {ref, reactive } from 'vue';
+import { useRouter } from 'vue-router';
     export default {
         setup(){
             const allTasks = ref([]);
+            const router = useRouter()
             
             // fetch all the task from database
                 const getAlltask = async() =>{
@@ -67,9 +69,16 @@ import {ref, reactive } from 'vue';
                     }
             }
 
+            const logout = function(){
+                axios.post('/api/logout').then(()=>{
+                    router.push({name: 'Welcome'})
+                })
+            }
+
             return{
                 allTasks,
-                finishTask
+                finishTask,
+                logout
             }
         }
     }
