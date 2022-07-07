@@ -7,12 +7,12 @@
                 <div class="col-md-6"><button class="btn btn-light w-100" @click="showRegister">Register</button></div>
             </div>
             <div v-show="login">
-                <form class="row g-3 mt-2">   
+                <form class="row g-3 mt-2" @submit.prevent="saveLogin">   
                     <div class="col-md-12">
                         <label for="" class="form-label">Email</label>
                         <div class="input-group has-validation">
                         <span class="input-group-text">@</span>
-                        <input type="email" class="form-control" aria-describedby="inputGroupPrepend3 " required>
+                        <input type="email" class="form-control" aria-describedby="inputGroupPrepend3" v-model="LoginForm.email" required>
                         <!-- <div id="validationServerUsernameFeedback" class="invalid-feedback">
                             Please choose a username.
                         </div> -->
@@ -21,7 +21,7 @@
 
                     <div class="col-md-12">
                         <label for="" class="form-label">Password</label>
-                        <input type="password" class="form-control" required>
+                        <input type="password" class="form-control" v-model="LoginForm.password" required>
                         <!-- <div class="valid-feedback">
                             Looks good!
                         </div> -->
@@ -89,6 +89,11 @@ import { useRouter } from 'vue-router';
                 'password': '',
                 'password_confirmation': ''
             })
+
+            const LoginForm = reactive({
+                'email': '',
+                'password': '',
+            })
             const errors = ref([])
 
             const showLogin = function(){
@@ -106,12 +111,22 @@ import { useRouter } from 'vue-router';
                 })
             }
 
+             const saveLogin = function(){
+                axios.post('/api/login', LoginForm).then(()=>{
+                    router.push({name: 'Viewtask'})
+                }).catch((error)=>{
+                    errors.value = error.response.data.errors;
+                })
+            }
+
             return{
                 login,
                 RegForm,
+                LoginForm,
                 showLogin,
                 showRegister,
-                saveReg
+                saveReg,
+                saveLogin
                 
             }
         }
