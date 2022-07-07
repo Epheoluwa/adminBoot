@@ -24,3 +24,4 @@ Route::resource('tasks', TaskController::class);
 Route::put('donetask/{id}', [TaskController::class, 'doneTask']);
 
 Route::post('register', [LoginController::class, 'register']);
+Route::post('login', [LoginController::class, 'login']);

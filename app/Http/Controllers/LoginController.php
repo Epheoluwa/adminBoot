@@ -25,4 +25,10 @@ class LoginController extends Controller
 
        return response()->json(['status'=> 'Customer created']);
     }
+
+
+    public function login(Request $request)
+    {
+       
+    }
 }
