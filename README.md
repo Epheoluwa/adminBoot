@@ -1,4 +1,5 @@
-Admin panel using bootstrap 5
+Admin panel using laravel , vue and bootstrap 5
+
 
 Steps to install
 
