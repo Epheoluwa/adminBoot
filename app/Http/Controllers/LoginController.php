@@ -25,6 +25,8 @@ class LoginController extends Controller
         'password' => Hash::make($request->password)
        ]);
 
+       Auth::attempt($request->only('email', 'password'));
+
        return response()->json(['status'=> 'Customer created']);
     }
 
@@ -37,7 +39,7 @@ class LoginController extends Controller
         ]);
 
         if(Auth::attempt($request->only('email', 'password'))){
-            return response()->json(Auth::user(), 200);
+            return response()->json(['status'=> 'Loggeed In'], 200);
         }
         throw ValidationException::withMessages([
             'email' => ['The provided credentials are incorect.']
