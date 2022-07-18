@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import Welcome from '../pages/Welcome.vue'
-import Addtask from '../pages/Addtask.vue'
+import Addtask from '../pages/Addtask.vue'  
 import Viewtask from '../pages/Viewtask.vue'
 import Comtask from '../pages/Comtask.vue'
 import Taskedit from '../pages/Taskedit.vue'
@@ -27,7 +27,8 @@ const routes = [
         beforeEnter:(to, from, next) =>{
             axios.get('/api/athenticated').then(()=>{
                 next()
-            }).catch(()=>{
+            }).catch((e)=>{
+                console.log(e.message)
                 return next({name: 'Login'})
             })
         }
