@@ -1,10 +1,11 @@
 
 # Laravel-Vue Admin panel 
-> A Laravel-Vue SPA Admin Dashboard the project is 80% complete
+> A Laravel-Vue SPA Admin Dashboard the project is 70% completen [Only task page ]
 
-<p align="center">
-    <img src="https://raw.githubusercontent.com/serkandyck/laravel-sanctum-vue-spa/master/screenshot/login.jpg">
-</p>
+
+# View site here
+https://laraadminpanelvue.herokuapp.com/
+
 
 
 ## Features
