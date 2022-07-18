@@ -1,6 +1,6 @@
 
 # Laravel-Vue Admin panel 
-> A Laravel-Vue SPA Admin Dashboard the project is 70% completen [Only task page ]
+> A Laravel-Vue SPA Admin Dashboard the project is 70% completen [chart and settings has not been done]
 
 
 # View site here
